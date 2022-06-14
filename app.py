@@ -9,13 +9,18 @@ CORS(app, resources={r"*": {"origins": "*"}})
 
 @app.route('/upload', methods=["POST"])
 def index():
+    print(os.environ.get('PASSWORD'))
     try:
         S3_ACCESS_KEY = os.environ.get('S3_ACCESS_KEY')
         S3_SECRET_KEY = os.environ.get('S3_SECRET_KEY')
         S3_FILES_BUCKET_NAME = os.environ.get('BUCKET_NAME')
         LOCATION = os.environ.get('LOCATION')
         PASSWORD = os.environ.get('PASSWORD')
-
+        print(S3_ACCESS_KEY)
+        print(S3_SECRET_KEY)
+        print(S3_FILES_BUCKET_NAME)
+        print(LOCATION)
+        print(PASSWORD)
         if request.headers.get('password') != PASSWORD:
             return jsonify({'status':'invalid password'})
             
