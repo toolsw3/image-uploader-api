@@ -3,24 +3,24 @@ from flask_cors import CORS
 import boto3
 import os
 import random
+import sys
 
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "*"}})
 
 @app.route('/upload', methods=["POST"])
 def index():
-    print(os.environ.get('PASSWORD'))
     try:
         S3_ACCESS_KEY = os.environ.get('S3_ACCESS_KEY')
         S3_SECRET_KEY = os.environ.get('S3_SECRET_KEY')
         S3_FILES_BUCKET_NAME = os.environ.get('BUCKET_NAME')
         LOCATION = os.environ.get('LOCATION')
         PASSWORD = os.environ.get('PASSWORD')
-        print(S3_ACCESS_KEY)
-        print(S3_SECRET_KEY)
-        print(S3_FILES_BUCKET_NAME)
-        print(LOCATION)
-        print(PASSWORD)
+        print(S3_ACCESS_KEY, file=sys.stderr)
+        print(S3_SECRET_KEY, file=sys.stderr)
+        print(S3_FILES_BUCKET_NAME, file=sys.stderr)
+        print(LOCATION, file=sys.stderr)
+        print(PASSWORD, file=sys.stderr)
         if request.headers.get('password') != PASSWORD:
             return jsonify({'status':'invalid password'})
             
@@ -43,7 +43,7 @@ def index():
 
         return jsonify({'status':'OK', 'url': url})
     except Exception as error:
-        print(str(error))
+        print(str(error), file=sys.stderr)
         return jsonify({'status':'ERROR'})
 
 
