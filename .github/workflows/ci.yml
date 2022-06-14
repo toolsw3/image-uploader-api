@@ -21,9 +21,9 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
         env:
-          S3_ACCESS_KEY: ${{ secrets.S3_ACCESS_KEY }}
-          S3_SECRET_KEY: ${{ secrets.S3_SECRET_KEY}}
-          S3_FILES_BUCKET_NAME: ${{ secrets.S3_FILES_BUCKET_NAME}}
-          BUCKET_NAME: ${{ secrets.BUCKET_NAME}}
-          PASSWORD: ${{ secrets.PASSWORD}}
-          LOCATION: ${{ secrets.LOCATION}}
+          S3_ACCESS_KEY: ${{secrets.S3_ACCESS_KEY }}
+          S3_SECRET_KEY: ${{secrets.S3_SECRET_KEY}}
+          S3_FILES_BUCKET_NAME: ${{secrets.S3_FILES_BUCKET_NAME}}
+          BUCKET_NAME: ${{secrets.BUCKET_NAME}}
+          PASSWORD: ${{secrets.PASSWORD}}
+          LOCATION: ${{secrets.LOCATION}}
